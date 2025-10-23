@@ -211,3 +211,64 @@ if (isset($_GET['delete_id'])) {
 </div>
 
 <?php require_once 'footer.php'; ?>
+
+<?php
+require_once 'db.php';
+include 'header.php';
+
+// Handle invoice creation and actions (existing logic remains)
+
+// Update: Link each invoice to a detail page in a new tab
+// Render invoices table (existing code adapted)
+
+// Fetch invoices (existing fetch block retained)
+?>
+<div class="container">
+    <h2>Invoices</h2>
+    <?php
+    // Fetch invoices with client names
+    $sql = "SELECT invoices.*, clients.name AS client_name FROM invoices LEFT JOIN clients ON invoices.client_id = clients.id ORDER BY invoices.created_at DESC";
+    $result = $conn->query($sql);
+    ?>
+    <table>
+        <thead>
+            <tr>
+                <th>Invoice</th>
+                <th>Client</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Payment</th>
+                <th>Tithe</th>
+                <th>Created</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php if ($result && $result->num_rows > 0): ?>
+            <?php while ($row = $result->fetch_assoc()): ?>
+                <tr>
+                    <td>
+                        <a href="invoice_detail.php?id=<?= (int)$row['id'] ?>" target="_blank" title="Open invoice in new tab">
+                            <?= htmlspecialchars($row['invoice_id']) ?>
+                        </a>
+                    </td>
+                    <td><?= htmlspecialchars($row['client_name'] ?? 'Unknown') ?></td>
+                    <td><?= htmlspecialchars($row['description']) ?></td>
+                    <td><?= number_format((float)$row['amount'], 2) ?></td>
+                    <td><?= htmlspecialchars($row['status']) ?></td>
+                    <td><?= htmlspecialchars($row['payment_status']) ?></td>
+                    <td><?= htmlspecialchars($row['tithe_status']) ?></td>
+                    <td><?= htmlspecialchars($row['created_at']) ?></td>
+                    <td>
+                        <!-- Keep existing actions if any -->
+                        <a href="invoice_detail.php?id=<?= (int)$row['id'] ?>" target="_blank">View</a>
+                    </td>
+                </tr>
+            <?php endwhile; ?>
+        <?php else: ?>
+            <tr><td colspan="9">No invoices found.</td></tr>
+        <?php endif; ?>
+        </tbody>
+    </table>
+</div>

@@ -1,20 +1,25 @@
 <?php
 // db.php
-// Database connection details
-$servername = "localhost";
-$username = "cyberros_aiuser";
-$password = "Admin4gpt*";
-$dbname = "cyberros_bizcashapp";
+// Central database bootstrap and session
 
-// Create connection
+$configPath = __DIR__ . '/config.php';
+if (!file_exists($configPath)) {
+    // Redirect to setup wizard if config missing
+    header('Location: setup.php');
+    exit;
+}
+
+$config = include $configPath;
+$servername = $config['db']['host'] ?? 'localhost';
+$username = $config['db']['user'] ?? 'root';
+$password = $config['db']['pass'] ?? '';
+$dbname = $config['db']['name'] ?? '';
+
 $conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Start session for user authentication
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }

@@ -169,7 +169,7 @@ $sql_where = $invoice_filter_id ? "WHERE t.invoice_id = $invoice_filter_id" : ""
                         $display_id = htmlspecialchars($row['invoice_display_id'] ?: '#' . $row['invoice_id']);
                         echo "<tr>";
                         echo "<td>" . $row["transaction_date"] . "</td>";
-                        echo "<td><a href='invoices.php'>" . $display_id . "</a></td>";
+                        echo "<td><a href='invoice_detail.php?id=" . $row["invoice_id"] . "' target='_blank'>" . $display_id . "</a></td>";
                         echo "<td>" . htmlspecialchars($row["type"]) . "</td>";
                         echo "<td>" . htmlspecialchars($row["description"]) . "</td>";
                         echo "<td style='$amount_style'>₦" . number_format($row["amount"], 2) . "</td>";

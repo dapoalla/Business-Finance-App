@@ -100,7 +100,7 @@ $total_unpaid_tithe = $unpaid_tithe_result->fetch_assoc()['total_unpaid_tithe'] 
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<td>" . htmlspecialchars($row['invoice_display_id'] ?: '#' . $row['id']) . "</td>";
+                        echo "<td><a href='invoice_detail.php?id=" . (int)$row['id'] . "' target='_blank'>" . htmlspecialchars($row['invoice_display_id'] ?: '#' . $row['id']) . "</a></td>";
                         echo "<td>" . htmlspecialchars($row['client_name']) . "</td>";
                         echo "<td>₦" . number_format($row['profit'], 2) . "</td>";
                         echo "<td><span class='status status-" . strtolower(htmlspecialchars($row['payment_status'])) . "'>" . htmlspecialchars($row['payment_status']) . "</span></td>";
@@ -117,3 +117,7 @@ $total_unpaid_tithe = $unpaid_tithe_result->fetch_assoc()['total_unpaid_tithe'] 
 </div>
 
 <?php require_once 'footer.php'; ?>
+
+// Update: ensure recent invoices list links to invoice_detail in new tab
+// Find rendering of recent invoices and change links
+// The following replacement ensures the invoice ID links to invoice_detail
