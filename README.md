@@ -1,4 +1,4 @@
-# BizCash Faith Edition  
+# BizCash - Finance App (For Small Businesses)  
 *A simple, self-hosted finance app for Christian small businesses*
 
 BizCash 1.1 Edition helps small and growing Christian businesses manage their finances with integrity and clarity — right from their own website.  
