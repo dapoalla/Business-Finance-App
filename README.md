@@ -1,7 +1,7 @@
 # BizCash Faith Edition  
 *A simple, self-hosted finance app for Christian small businesses*
 
-BizCash Faith Edition helps small and growing Christian businesses manage their finances with integrity and clarity — right from their own website.  
+BizCash 1.1 Edition helps small and growing Christian businesses manage their finances with integrity and clarity — right from their own website.  
 It keeps everything in one place: cash flow, invoices, expenses, and insightful reports.  
 Most importantly, it includes a **unique tithe calculation feature** that automatically determines the tithe due from the profit of each closed invoice.
 
@@ -41,11 +41,7 @@ When you close a customer invoice, the system automatically calculates your **pr
 - **Fast workflows** – Intuitive design for everyday use  
 - **Scalable** – Grows with your business needs  
 
----
 
-## 🚧 Project Status
-This repository is under active development.  
-Core modules (invoicing, expenses, and tithe computation) are in progress, with features released in iterations focused on reliability, simplicity, and practical faith integration.
 
 ---
 
